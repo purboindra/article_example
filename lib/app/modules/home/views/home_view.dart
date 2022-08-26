@@ -165,7 +165,7 @@ class HomeView extends GetView<HomeController> {
                               child: Row(
                                 children: [
                                   Text(
-                                    'December 25, 2022',
+                                    data['date'],
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       color: Colors.blueAccent,
