@@ -212,6 +212,68 @@ class HomeView extends GetView<HomeController> {
                 },
               ),
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            GetBuilder<HomeController>(
+              init: HomeController(),
+              tag: 'dropDown',
+              builder: (homeC) {
+                return Container(
+                  width: Get.size.width,
+                  height: 56,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 22,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                  ),
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: DropdownButton(
+                    hint: Text(
+                      'Select your name...',
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                    isExpanded: true,
+                    icon: Container(
+                      color: Colors.black,
+                      width: 56,
+                      height: 56,
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Icon(
+                        Icons.arrow_downward,
+                        color: Colors.white,
+                      ),
+                    ),
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.deepPurple),
+                    underline: Container(),
+                    borderRadius: BorderRadius.circular(12),
+                    onChanged: homeC.disable.isTrue
+                        ? null
+                        : (String? value) {
+                            homeC.selected(value!);
+                            homeC.update();
+                          },
+                    value: homeC.selectedDropDown,
+                    items: homeC.items.map((selectedVal) {
+                      return DropdownMenuItem<String>(
+                        value: selectedVal,
+                        child: Text(selectedVal),
+                      );
+                    }).toList(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),

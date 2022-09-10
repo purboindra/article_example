@@ -20,6 +20,24 @@ class HomeController extends GetxController {
     }
   }
 
+  var items = <String>[
+    'Melisa',
+    'Ruby',
+    'Nabela',
+  ].obs;
+
+  var disable = false.obs;
+
+  String? selectedDropDown;
+
+  void selected(String value) {
+    selectedDropDown = value;
+    if (value.isNotEmpty) {
+      disable.value = true;
+    }
+    update(['dropDown']);
+  }
+
   List<Map<String, dynamic>> dataCard = [
     {
       'id': 0,
