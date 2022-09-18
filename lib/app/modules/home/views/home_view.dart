@@ -49,6 +49,67 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 20,
             ),
+
+            //  START RADIO
+            GetBuilder<HomeController>(
+              init: HomeController(),
+              initState: (_) {},
+              didUpdateWidget: (oldWidget, state) {
+                // state.setState(() {});
+                oldWidget.tag;
+              },
+              builder: (homeC) {
+                return Row(
+                  children: [
+                    Expanded(
+                      child: RadioListTile(
+                        value: 1,
+                        groupValue: homeC.selectedRadio,
+                        onChanged: (int? newVal) {
+                          homeC.setSelectedRadioTile(newVal!);
+                        },
+                        title: Text('Flutter'),
+                        activeColor: Colors.red,
+                      ),
+                    ),
+                    Expanded(
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: homeC.selectedRadio,
+                        onChanged: (int? newVal) {
+                          homeC.setSelectedRadioTile(newVal!);
+                        },
+                        title: Text('React'),
+                        activeColor: Colors.red,
+                      ),
+                    ),
+                    Expanded(
+                      child: RadioListTile(
+                        value: 3,
+                        groupValue: homeC.selectedRadio,
+                        onChanged: (int? newVal) {
+                          homeC.setSelectedRadioTile(newVal!);
+                        },
+                        title: Text('Golang'),
+                        activeColor: Colors.red,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+              onPressed: () => controller.resetRadio(),
+              child: Text('Submit'),
+            ),
+
+            //  END RADIO
+            const SizedBox(
+              height: 20,
+            ),
             Expanded(
               // width: Get.size.width,
               child: ListView.builder(

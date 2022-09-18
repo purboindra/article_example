@@ -3,6 +3,24 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   var listCard = [].obs;
 
+  List<String> radio = [
+    'flutter',
+    'react',
+    'golang',
+  ].obs;
+
+  int selectedRadio = 0;
+
+  void resetRadio() {
+    selectedRadio = 0;
+    update();
+  }
+
+  setSelectedRadioTile(int val) {
+    selectedRadio = val;
+    update();
+  }
+
   void selectFav(int index) {
     if (!getFav(index).value) {
       listCard.add(index);
